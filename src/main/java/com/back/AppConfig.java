@@ -17,8 +17,14 @@ public class AppConfig {
     @Bean
     public ApplicationRunner myApplicationRunner3() {
         return args -> {
-               self.work1();
-               self.work2();
+
+            // 리얼 객체의 메서드 호출
+            this.work1();
+            this.work1();
+
+            // 프록시 객체의 메서드 호출
+            self.work1();
+            self.work1();
         };
     }
 
