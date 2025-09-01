@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class WiseSayingService {
 
-   private final WiseSayingRepository wiseSayingRepository;
+    private final WiseSayingRepository wiseSayingRepository;
 
     public WiseSaying write(String content, String author) {
 
@@ -29,7 +29,7 @@ public class WiseSayingService {
     public WiseSaying findById(int id) {
         Optional<WiseSaying> wiseSaying = wiseSayingRepository.findById(id);
 
-        if(wiseSaying.isEmpty()) {
+        if (wiseSaying.isEmpty()) {
             throw new RuntimeException("%d번 명언은 존재하지 않습니다.".formatted(id));
         }
         return wiseSaying.get();
@@ -41,5 +41,9 @@ public class WiseSayingService {
 
     public void modify(WiseSaying wiseSaying, String content, String author) {
         wiseSaying.update(content, author);
+    }
+
+    public long count() {
+        return wiseSayingRepository.count();
     }
 }
